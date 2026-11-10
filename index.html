@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Aplicativos | jp4rj</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0d1117;
+            --bg-card: #161b22;
+            --bg-card-hover: #1c2330;
+            --border: #30363d;
+            --text: #e6edf3;
+            --text-muted: #8b949e;
+            --accent: #58a6ff;
+            --accent-2: #a371f7;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.6;
+            background-image:
+                radial-gradient(ellipse at top left, rgba(88, 166, 255, 0.08), transparent 50%),
+                radial-gradient(ellipse at bottom right, rgba(163, 113, 247, 0.08), transparent 50%);
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Cabeçalho */
+        header {
+            padding: 80px 0 48px;
+            text-align: center;
+        }
+
+        .avatar {
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            margin: 0 auto 24px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #0d1117;
+            box-shadow: 0 0 40px rgba(88, 166, 255, 0.3);
+        }
+
+        h1 {
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+        }
+
+        h1 span {
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        /* Grade de Apps */
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 24px 0 80px;
+        }
+
+        .app-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+
+        .app-card:hover {
+            transform: translateY(-4px);
+            border-color: #404a5b;
+            background: var(--bg-card-hover);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .app-card:hover::before { opacity: 1; }
+
+        .app-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            background: rgba(88, 166, 255, 0.1);
+            border: 1px solid rgba(88, 166, 255, 0.2);
+        }
+
+        .app-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .app-description {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+
+        .app-links {
+            display: flex;
+            gap: 16px;
+            padding-top: 8px;
+            border-top: 1px solid var(--border);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .app-links a {
+            color: var(--accent);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: opacity 0.2s;
+        }
+
+        .app-links a:hover { opacity: 0.7; }
+
+        .app-links a.github {
+            color: var(--text-muted);
+        }
+
+        /* Rodapé */
+        footer {
+            text-align: center;
+            padding: 40px 0 60px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="avatar">JP</div>
+            <h1>Meus <span>Aplicativos</span></h1>
+            <p class="subtitle">
+                Uma coleção de pequenos projetos e utilidades que desenvolvi e publiquei na web.
+            </p>
+        </header>
+
+        <main class="apps-grid">
+
+            <!-- Quebra-Cabeça -->
+            <div class="app-card">
+                <div class="app-icon">🧩</div>
+                <h2 class="app-title">Quebra-Cabeça</h2>
+                <p class="app-description">
+                    Um jogo de quebra-cabeça interativo para exercitar a lógica e a paciência.
+                </p>
+                <div class="app-links">
+                    <a href="https://jp4rj.github.io/quebra-cabeca/" target="_blank" rel="noopener">▶ Abrir app</a>
+                    <a href="https://github.com/jp4rj/quebra-cabeca" target="_blank" rel="noopener" class="github">⌥ Código</a>
+                </div>
+            </div>
+
+            <!-- Amigo-Oculto -->
+            <div class="app-card">
+                <div class="app-icon">🎁</div>
+                <h2 class="app-title">Amigo-Oculto</h2>
+                <p class="app-description">
+                    Sorteie amigos secretos de forma simples e organizada, sem complicação.
+                </p>
+                <div class="app-links">
+                    <a href="https://jp4rj.github.io/amigo-oculto/" target="_blank" rel="noopener">▶ Abrir app</a>
+                    <a href="https://github.com/jp4rj/amigo-oculto" target="_blank" rel="noopener" class="github">⌥ Código</a>
+                </div>
+            </div>
+
+            <!-- Exercício Mental -->
+            <div class="app-card">
+                <div class="app-icon">🧠</div>
+                <h2 class="app-title">Exercício Mental</h2>
+                <p class="app-description">
+                    Desafios rápidos para treinar o cérebro e melhorar o raciocínio.
+                </p>
+                <div class="app-links">
+                    <a href="https://jp4rj.github.io/exercicio-mental/" target="_blank" rel="noopener">▶ Abrir app</a>
+                    <a href="https://github.com/jp4rj/exercicio-mental" target="_blank" rel="noopener" class="github">⌥ Código</a>
+                </div>
+            </div>
+
+            <!-- Renomear Arquivos -->
+            <div class="app-card">
+                <div class="app-icon">📁</div>
+                <h2 class="app-title">Renomear Arquivos</h2>
+                <p class="app-description">
+                    Ferramenta prática para renomear arquivos em lote de forma rápida.
+                </p>
+                <div class="app-links">
+                    <a href="https://jp4rj.github.io/renomear_arquivos/" target="_blank" rel="noopener">▶ Abrir app</a>
+                    <a href="https://github.com/jp4rj/renomear_arquivos" target="_blank" rel="noopener" class="github">⌥ Código</a>
+                </div>
+            </div>
+
+        </main>
+
+        <footer>
+            Feito com 💙 por <a href="https://github.com/jp4rj" target="_blank" rel="noopener">jp4rj</a> · Hospedado no GitHub Pages
+        </footer>
+    </div>
+</body>
+</html>
